@@ -3,11 +3,14 @@ import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera'
 import {Filesystem, Directory} from '@capacitor/filesystem'
 // import {Storage} from '@capacitor/storage'
 import { Preferences } from '@capacitor/preferences'; //Storage ya no funciona y parece que este es el reemplazo
+import { Foto } from "../models/foto.interface"
 
 @Injectable({
   providedIn: 'root'
 })
 export class FotoService {
+  //Arreglo para almacenar Fotos
+  public fotos: Foto[] = [];
 
   constructor() { }
 
@@ -18,5 +21,11 @@ export class FotoService {
       source: CameraSource.Camera,
       quality: 100
     })
+
+    this.fotos.unshift({
+      filepath: "foto_",
+      webviewPath: fotoCapturada.webPath ?? '', // Si es undefined, asigna una cadena vacía
+    })
+    
   }
 }
