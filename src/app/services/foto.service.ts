@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera'
+import {Camera, CameraPhoto, CameraResultType, CameraSource, Photo} from '@capacitor/camera'
 import {Filesystem, Directory} from '@capacitor/filesystem'
 // import {Storage} from '@capacitor/storage'
 import { Preferences } from '@capacitor/preferences'; //Storage ya no funciona y parece que este es el reemplazo
@@ -26,6 +26,9 @@ export class FotoService {
       filepath: "foto_",
       webviewPath: fotoCapturada.webPath ?? '', // Si es undefined, asigna una cadena vacía
     })
+  }
+
+  public async savePicture(cameraPhoto: CameraPhoto){
     
   }
 }
